@@ -1,6 +1,8 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ViewEncapsulation } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { DialogTableComponent } from '../dialog-table/dialog-table.component';
 import { answerIsGood, levels, TableElement } from './levels';
 
 
@@ -35,7 +37,7 @@ export class AnswerCheckerComponent implements OnInit {
         return this.currentQuestion == this.totalQuestions;
     }
 
-    constructor(private readonly snackBar: MatSnackBar) { }
+    constructor(private readonly _snackBar: MatSnackBar, private readonly _dialog: MatDialog) { }
 
     public ngOnInit(): void {
         this.nextLevel();
@@ -43,8 +45,23 @@ export class AnswerCheckerComponent implements OnInit {
 
     private nextLevel(): void {
         this.currentQuestion++;
-        this.displayedColumns = levels[this.currentQuestion - 1].displayedColumns;
-        this.dataSource = levels[this.currentQuestion - 1].dataSource;
+        const level = levels[this.currentQuestion - 1];
+        this.displayedColumns = level.displayedColumns;
+        this.dataSource = level.dataSource;
+        this._dialog.open(DialogTableComponent, {
+            maxWidth: '80vw',
+            width: '600px',
+            data: { title: level.title, text: level.text }
+        });
+    }
+
+    private endLevel(): void {
+        this.endQuestion.emit();
+        this._dialog.open(DialogTableComponent, {
+            maxWidth: '80vw',
+            width: '600px',
+            data: { title: 'Title', text: 'Text' }
+        });
     }
 
     public prevQuestion(): void {
@@ -56,15 +73,15 @@ export class AnswerCheckerComponent implements OnInit {
     }
 
     public finishQuiz(): void {
-        this.checkAnswer(() => this.endQuestion.emit());
+        this.checkAnswer(() => this.endLevel());
     }
 
     private checkAnswer(onGood: Function) {
         if (answerIsGood(this.dataSource, levels[this.currentQuestion - 1].answer)) {
-            this.snackBar.open(this.lastQuestion ? "Nog een laatste puzzel!" : "Goede antwoord!", "Sluiten", { duration: 2000, panelClass: ['good-snackbar'] });
+            this._snackBar.open(this.lastQuestion ? "Nog een laatste puzzel!" : "Goede antwoord!", "Sluiten", { duration: 2000, panelClass: ['good-snackbar'] });
             onGood();
         } else {
-            this.snackBar.open("Fout antwoord!", "Sluiten", { duration: 2000, panelClass: ['bad-snackbar'] });
+            this._snackBar.open("Fout antwoord!", "Sluiten", { duration: 2000, panelClass: ['bad-snackbar'] });
         }
     }
 

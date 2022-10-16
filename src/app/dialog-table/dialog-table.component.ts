@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { MatDialogRef } from '@angular/material/dialog';
+import { Component, Inject, Input } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 export interface TableElement {
     number: number;
@@ -13,14 +13,13 @@ export interface TableElement {
 })
 export class DialogTableComponent {
 
-    public displayedColumns: string[] = ['number', 'letter'];
-    public dataSource: TableElement[] = [
-        { number: 1, letter: 'A' },
-        { number: 2, letter: 'B' },
-        { number: 3, letter: 'C' },
-    ];
+    public title: string = "";
+    public text: string = "";
 
-    constructor(public dialogRef: MatDialogRef<DialogTableComponent>) { }
+    constructor(public dialogRef: MatDialogRef<DialogTableComponent>, @Inject(MAT_DIALOG_DATA) public data: any) {
+        this.title = data.title;
+        this.text = data.text;
+    }
 
     public close(): void {
         this.dialogRef.close();

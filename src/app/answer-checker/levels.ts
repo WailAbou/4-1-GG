@@ -14,7 +14,9 @@ const level1 = {
     ],
     answer: [
         { row: 1, ands: 1 },
-    ]
+    ],
+    title: 'Level 1',
+    text: 'Tekst'
 }
 
 const level2 = {
@@ -24,7 +26,9 @@ const level2 = {
     ],
     answer: [
         { row: 1, ands: 1 },
-    ]
+    ],
+    title: 'Level 2',
+    text: 'Het eerste letter wat je krijgt van ons is <b>H</b>'
 }
 
 const level3 = {
@@ -34,7 +38,9 @@ const level3 = {
     ],
     answer: [
         { row: 1, ands: 1 },
-    ]
+    ],
+    title: 'Level 3',
+    text: 'Tekst'
 }
 
 const level4 = {
@@ -44,7 +50,9 @@ const level4 = {
     ],
     answer: [
         { row: 1, ands: 1 },
-    ]
+    ],
+    title: 'Level 4',
+    text: 'Tekst'
 }
 
 const level5 = {
@@ -54,7 +62,9 @@ const level5 = {
     ],
     answer: [
         { row: 1, ands: 1 },
-    ]
+    ],
+    title: 'Level 5',
+    text: 'Tekst'
 }
 
 const levels = [
