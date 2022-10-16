@@ -1,0 +1,57 @@
+<div fxLayout fxLayoutAlign="center center" class="card-wrapper">
+    <mat-card class="example-card">
+        <div class="progress-bar" fxLayout="row" fxLayoutGap="22px" fxLayoutAlign="start baseline">
+            <p>{{currentQuestion}}/{{totalQuestions}}</p>
+            <mat-progress-bar mode="determinate" value="{{percentageDone}}"></mat-progress-bar>
+            <p>{{percentageDone}}%</p>
+        </div>
+        <div class="divider">
+            <mat-divider></mat-divider>
+        </div>
+        <mat-card-header>
+            <mat-card-title>Puzzel: {{currentQuestion}}</mat-card-title>
+            <mat-card-subtitle>Moelijkheidsgraad: {{difficulties[currentQuestion]}}</mat-card-subtitle>
+        </mat-card-header>
+
+        <mat-card-content>
+            <div class="example-container mat-elevation-z8">
+                <mat-table matSort [dataSource]="dataSource">
+                    <ng-container *ngFor="let columnName of displayedColumns; let i = index"
+                        matColumnDef="{{columnName}}">
+                        <mat-header-cell *matHeaderCellDef> {{headers[i]}} </mat-header-cell>
+                        <mat-cell *matCellDef="let element" mat-sort-header [attr.data-label]="columnName">
+                            <b *ngIf="properties[i] == 'row'" style="padding-right: 100px;">
+                                {{element[properties[i]]}}
+                            </b>
+                            <mat-form-field *ngIf="properties[i] != 'row'">
+                                <input type="number" matInput [value]="element[properties[i]]"
+                                    [(ngModel)]="element[properties[i]]"
+                                    (keyup.enter)="lastQuestion ? finishQuiz() : nextQuestion()" placeholder="Aantal:">
+                            </mat-form-field>
+                        </mat-cell>
+                    </ng-container>
+                    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+                </mat-table>
+            </div>
+        </mat-card-content>
+
+        <mat-card-actions>
+            <button mat-raised-button color="primary" class="prev-button" (click)="prevQuestion()">
+                <mat-icon aria-hidden="false" fontIcon="arrow_backward"></mat-icon>
+                Vorige
+            </button>
+
+            <button *ngIf="!lastQuestion" mat-raised-button color="primary" class="next-button"
+                (click)="nextQuestion()">
+                Volgende
+                <mat-icon aria-hidden="false" fontIcon="arrow_forward"></mat-icon>
+            </button>
+
+            <button *ngIf="lastQuestion" mat-raised-button color="primary" class="next-button" (click)="finishQuiz()">
+                Eindig
+                <mat-icon aria-hidden="false" fontIcon="flag"></mat-icon>
+            </button>
+        </mat-card-actions>
+    </mat-card>
+</div>

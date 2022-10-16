@@ -1,0 +1,6 @@
+<div style="height: 100vh;">
+    <app-navbar>
+        <app-answer-checker [letters]="letters" (endQuestion)="doEndChecker()" *ngIf="!endChecker"></app-answer-checker>
+        <app-end-checker [answer]="letters" *ngIf="endChecker"></app-end-checker>
+    </app-navbar>
+</div>
