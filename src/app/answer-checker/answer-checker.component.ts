@@ -22,12 +22,17 @@ export class AnswerCheckerComponent implements OnInit {
 
     public totalQuestions: number = 5;
     public currentQuestion: number = 0;
-    public difficulties: string[] = ['makkelijk', 'makkelijk', 'gemiddeld', 'gemiddeld', 'moeilijk'];
+    public difficulties: string[] = ['makkelijk', 'makkelijk', 'makkelijk', 'makkelijk', 'gemiddeld', 'gemiddeld', 'gemiddeld', 'gemiddeld', 'moeilijk', 'moeilijk'];
 
     public headers: string[] = ['Rij', 'AND Gates', 'OR Gates', 'NOT Gates', 'XOR Gates', 'NAND Gates'];
     public properties: string[] = ['row', 'ands', 'ors', 'nots', 'xors', 'nands'];
     public displayedColumns: string[] = [];
     public dataSource: TableElement[] = [];
+
+    public getHeader(columnName: string): string {
+        const i = this.properties.indexOf(columnName);
+        return this.headers[i];
+    }
 
     public get percentageDone() {
         return this.currentQuestion / this.totalQuestions * 100;
@@ -60,7 +65,7 @@ export class AnswerCheckerComponent implements OnInit {
         this._dialog.open(DialogTableComponent, {
             maxWidth: '80vw',
             width: '600px',
-            data: { title: 'Title', text: 'Text' }
+            data: { title: 'Laatste level: BUITENHEK', text: 'Tijdens onze gesprekken heb ik je een aantal hints gegeven in de vorm van letters, deze heb je nu tot je beschikking... Ontcijfer het woord en roep deze luidop uit🔊 om de stem geactiveerde deur te openen, veel succes ik zie je aan de andere kant! Hopelijk...' }
         });
     }
 

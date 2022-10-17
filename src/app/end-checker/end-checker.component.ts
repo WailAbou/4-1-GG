@@ -1,6 +1,8 @@
 import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogTableComponent } from '../dialog-table/dialog-table.component';
 
 @Component({
     selector: 'app-end-checker',
@@ -14,17 +16,13 @@ export class EndCheckerComponent implements OnInit {
     public answer: string[] = [];
     public letters: string[] = [];
     public inputs: string[] = [];
-    public solution: string = 'HACKER';
+    public solution: string = 'DECIPHERER';
 
-    constructor(private readonly snackBar: MatSnackBar) { }
+    constructor(private readonly _snackBar: MatSnackBar, private readonly _dialog: MatDialog) { }
 
     public ngOnInit(): void {
         this.letters = [...this.answer];
         this.inputs = Array(this.letters.length).fill('')
-    }
-
-    public get firstLetter(): string {
-        return this.solution[0];
     }
 
     public drop(event: CdkDragDrop<string[]>, i: number): void {
@@ -35,12 +33,17 @@ export class EndCheckerComponent implements OnInit {
             transferArrayItem(event.previousContainer.data, this.inputs, event.previousIndex, i);
         }
 
-        const endInput = this.firstLetter + this.inputs.join('');
+        const endInput = this.inputs.join('');
         if (endInput.length == this.solution.length) {
             if (endInput == this.solution) {
-                this.snackBar.open("Juiste volgorde!", "Sluiten", { duration: 2000, panelClass: ['good-snackbar'] });
+                this._snackBar.open("Juiste volgorde!", "Sluiten", { duration: 2000, panelClass: ['good-snackbar'] });
+                this._dialog.open(DialogTableComponent, {
+                    maxWidth: '80vw',
+                    width: '600px',
+                    data: { title: 'Je bent ontsnapt!', text: 'Goed gedaan!' }
+                });
             } else {
-                this.snackBar.open("Onjuiste volgorde!", "Sluiten", { duration: 2000, panelClass: ['bad-snackbar'] });
+                this._snackBar.open("Onjuiste volgorde!", "Sluiten", { duration: 2000, panelClass: ['bad-snackbar'] });
             }
         }
     }

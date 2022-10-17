@@ -18,14 +18,14 @@
                 <mat-table matSort [dataSource]="dataSource">
                     <ng-container *ngFor="let columnName of displayedColumns; let i = index"
                         matColumnDef="{{columnName}}">
-                        <mat-header-cell *matHeaderCellDef> {{headers[i]}} </mat-header-cell>
+                        <mat-header-cell *matHeaderCellDef> {{getHeader(columnName)}} </mat-header-cell>
                         <mat-cell *matCellDef="let element" mat-sort-header [attr.data-label]="columnName">
-                            <b *ngIf="properties[i] == 'row'" style="padding-right: 100px;">
-                                {{element[properties[i]]}}
+                            <b *ngIf="columnName == 'row'" style="padding-right: 100px;">
+                                {{element[columnName]}}
                             </b>
-                            <mat-form-field *ngIf="properties[i] != 'row'">
-                                <input type="number" matInput [value]="element[properties[i]]"
-                                    [(ngModel)]="element[properties[i]]"
+                            <mat-form-field *ngIf="columnName != 'row'">
+                                <input type="number" matInput [value]="element[columnName]"
+                                    [(ngModel)]="element[columnName]"
                                     (keyup.enter)="lastQuestion ? finishQuiz() : nextQuestion()" placeholder="Aantal:">
                             </mat-form-field>
                         </mat-cell>

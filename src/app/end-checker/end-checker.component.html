@@ -7,9 +7,6 @@
         <mat-card-content cdkDropListGroup>
             <p>Vul hier het antoord in:</p>
             <div class="example-list">
-                <div class="example-box not-draggable">
-                    {{firstLetter}}
-                </div>
                 <div cdkDropList cdkDropListOrientation="horizontal" class="example-box" [cdkDropListData]="[input]"
                     (cdkDropListDropped)="drop($event, i)" *ngFor="let input of inputs; let i = index">
                     {{input}}
