@@ -20,7 +20,7 @@ export class AnswerCheckerComponent implements OnInit {
     @Output()
     public endQuestion: EventEmitter<void> = new EventEmitter<void>();
 
-    public totalQuestions: number = 10;
+    public totalQuestions: number = 6;
     public currentQuestion: number = 0;
     public difficulties: string[] = ['makkelijk', 'makkelijk', 'makkelijk', 'makkelijk', 'gemiddeld', 'gemiddeld', 'gemiddeld', 'gemiddeld', 'moeilijk', 'moeilijk'];
 
