@@ -20,60 +20,64 @@ const level1 = {
 }
 
 const level2 = {
-    displayedColumns: ['row', 'ands'],
+    displayedColumns: ['row', 'nands'],
     dataSource: [
         { row: 1 },
     ],
     answer: [
-        { row: 1, ands: 1 },
+        { row: 1, nands: 1 },
     ],
     title: 'Level 2: GANG',
     text: 'Goed gedaan, je bent voorbij je eerste obstakel. Maar nu is er geen weg terug, veel succes en wees op je hoede en blijf in de schaduw zodat de bewakers👮 je niet zien.'
 }
 
 const level3 = {
-    displayedColumns: ['row', 'ands'],
+    displayedColumns: ['row', 'ands', 'nands'],
     dataSource: [
         { row: 1 },
     ],
     answer: [
-        { row: 1, ands: 1 },
+        { row: 1, ands: 1, nands: 1 },
     ],
     title: 'Level 3: KANTINE',
     text: ''
 }
 
 const level4 = {
-    displayedColumns: ['row', 'ands'],
+    displayedColumns: ['row', 'ors'],
     dataSource: [
         { row: 1 },
     ],
     answer: [
-        { row: 1, ands: 1 },
+        { row: 1, ors: 2 },
     ],
     title: 'Level 4: VENTILATIESCHACHTEN',
     text: 'Kruip stiletjes door de ventilatieschachten en zoek een geschikte plek om er uit te gaan.'
 }
 
 const level5 = {
-    displayedColumns: ['row', 'ands'],
+    displayedColumns: ['row', 'ands', 'nands', 'ors'],
     dataSource: [
         { row: 1 },
     ],
     answer: [
-        { row: 1, ands: 1 },
+        { row: 1, ands: 1, nands: 1, ors: 1 },
     ],
     title: 'Level 5: WASSERIJ',
     text: 'Je bent in een bak vol met kleren gevallen? Je hebt veel geluk🍀 dat dit er stond, sta op en ga verder voordat de bewakers je opmerken.'
 }
 
 const level6 = {
-    displayedColumns: ['row', 'ands'],
+    displayedColumns: ['row', 'xors'],
     dataSource: [
         { row: 1 },
+        { row: 2 },
+        { row: 3 },
     ],
     answer: [
-        { row: 1, ands: 1 },
+        { row: 1, xors: 2 },
+        { row: 2, xors: 2 },
+        { row: 3, xors: 2 },
     ],
     title: 'Level 6: CELLENBLOK',
     text: ''

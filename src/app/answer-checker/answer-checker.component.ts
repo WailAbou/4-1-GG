@@ -20,7 +20,7 @@ export class AnswerCheckerComponent implements OnInit {
     @Output()
     public endQuestion: EventEmitter<void> = new EventEmitter<void>();
 
-    public totalQuestions: number = 5;
+    public totalQuestions: number = 10;
     public currentQuestion: number = 0;
     public difficulties: string[] = ['makkelijk', 'makkelijk', 'makkelijk', 'makkelijk', 'gemiddeld', 'gemiddeld', 'gemiddeld', 'gemiddeld', 'moeilijk', 'moeilijk'];
 
@@ -83,7 +83,7 @@ export class AnswerCheckerComponent implements OnInit {
 
     private checkAnswer(onGood: Function) {
         if (answerIsGood(this.dataSource, levels[this.currentQuestion - 1].answer)) {
-            this._snackBar.open(this.lastQuestion ? "Nog een laatste puzzel!" : "Goede antwoord!", "Sluiten", { duration: 2000, panelClass: ['good-snackbar'] });
+            this._snackBar.open(this.lastQuestion ? "Nog een laatste puzzel!" : "Goed antwoord!", "Sluiten", { duration: 2000, panelClass: ['good-snackbar'] });
             onGood();
         } else {
             this._snackBar.open("Fout antwoord!", "Sluiten", { duration: 2000, panelClass: ['bad-snackbar'] });

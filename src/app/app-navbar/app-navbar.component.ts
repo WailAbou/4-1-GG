@@ -15,7 +15,7 @@ export class AppNavbarComponent {
         this.dialog.open(DialogTableComponent, {
             maxWidth: '80vw',
             width: '600px',
-            data: { title: 'Hulp Nodig?', text: 'Neem met een van de organisators contact voor het juiste antwoord of andere hulp.' }
+            data: { title: 'Hulp Nodig?', text: 'Neem met een van de organisators contact voor het juiste antwoord of een andere vraag.' }
         });
     }
 }
