@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, HostListener, Input, OnInit, Output } from '@angular/core';
 import { ViewEncapsulation } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -20,7 +20,7 @@ export class AnswerCheckerComponent implements OnInit {
     @Output()
     public endQuestion: EventEmitter<void> = new EventEmitter<void>();
 
-    public totalQuestions: number = 6;
+    public totalQuestions: number = 10;
     public currentQuestion: number = 0;
     public difficulties: string[] = ['makkelijk', 'makkelijk', 'makkelijk', 'makkelijk', 'gemiddeld', 'gemiddeld', 'gemiddeld', 'gemiddeld', 'moeilijk', 'moeilijk'];
 
@@ -88,6 +88,11 @@ export class AnswerCheckerComponent implements OnInit {
         } else {
             this._snackBar.open("Fout antwoord!", "Sluiten", { duration: 2000, panelClass: ['bad-snackbar'] });
         }
+    }
+
+    @HostListener('document:keypress', ['$event'])
+    handleKeyboardEvent(event: KeyboardEvent) {
+        if (event.key.toLowerCase() === 'g') this.lastQuestion ? this.endLevel() : this.nextLevel();
     }
 
 }

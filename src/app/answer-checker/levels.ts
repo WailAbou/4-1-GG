@@ -16,7 +16,7 @@ const level1 = {
         { row: 1, ands: 1 },
     ],
     title: 'Level 1: GEVANGENISCEL',
-    text: 'Je zit gevangen in de meest high-tech gevangenis van het millenium! Maa<b>R</b> geen zo<b>R</b>gen ik help je ontstnappen🤫 Los de puzzel op en ontg<b>R</b>endel jouw gevangenis deur. Maar blijf op je hoede, want 1 ve<b>R</b>kee<b>R</b>de zet en de bewake<b>R</b>s komen naa<b>R</b> je toe!'
+    text: 'Je zit gevangen in de meest high-tech gevangenis van het millenium! Maa<b>r</b> geen zo<b>r</b>gen ik help je ontstnappen🤫 Los de puzzel op en ontg<b>r</b>endel jouw gevangenis deur. Maar blijf op je hoede, want 1 ve<b>r</b>kee<b>r</b>de zet en de bewake<b>r</b>s komen naa<b>r</b> je toe!'
 }
 
 const level2 = {
@@ -40,7 +40,7 @@ const level3 = {
         { row: 1, ands: 1, nands: 1 },
     ],
     title: 'Level 3: KANTINE',
-    text: ''
+    text: 'Probeer niet te veel geluid te maken want vergis je niet hoewel de koks gefocused zijn op het eten zullen zeker geen moment twijfelen om de bewakers te roepen als ze je pakken.'
 }
 
 const level4 = {
@@ -80,7 +80,7 @@ const level6 = {
         { row: 3, xors: 2 },
     ],
     title: 'Level 6: CELLENBLOK',
-    text: ''
+    text: 'Blijf in de schaduws want je bent niet de enige die wilt ontstnappen, mochten de andere gevangenen beseffen dat je ze niet kan helpen dan zullen ze tegen je keren.'
 }
 
 const level7 = {
@@ -92,7 +92,7 @@ const level7 = {
         { row: 1, ands: 1 },
     ],
     title: 'Level 7: CELLENBLOK',
-    text: ''
+    text: 'Blijf zo doorgaan ik krijg signalen binnen van de eindingang, nog even door!'
 }
 
 const level8 = {
@@ -104,7 +104,7 @@ const level8 = {
         { row: 1, ands: 1 },
     ],
     title: 'Level 8: BEZOEKERS INGANG',
-    text: ''
+    text: 'Normale wijs een ingang voor bezoekers maar dit keer een kans om een eigen uitgang te vinden!'
 }
 
 const level9 = {
@@ -116,7 +116,7 @@ const level9 = {
         { row: 1, ands: 1 },
     ],
     title: 'Level 9: LUCHTPLAATS',
-    text: ''
+    text: 'De frisse lucht is vast verfrissend, maar blijf gefocused je bent er nog niet!'
 }
 
 const level10 = {
