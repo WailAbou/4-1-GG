@@ -3,7 +3,7 @@ import { ViewEncapsulation } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { DialogTableComponent } from '../dialog-table/dialog-table.component';
-import { answerIsGood, levels, TableElement } from './levels';
+import { answerIsGood, levels, playFireworks, TableElement } from './levels';
 
 
 @Component({
@@ -58,6 +58,7 @@ export class AnswerCheckerComponent implements OnInit {
             width: '600px',
             data: { title: level.title, text: level.text }
         });
+        if (this.currentQuestion - 1 > 0) playFireworks(1);
     }
 
     private endLevel(): void {

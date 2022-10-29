@@ -3,6 +3,7 @@ import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/dr
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogTableComponent } from '../dialog-table/dialog-table.component';
+import { playFireworks } from '../answer-checker/levels';
 
 @Component({
     selector: 'app-end-checker',
@@ -42,6 +43,7 @@ export class EndCheckerComponent implements OnInit {
                     width: '600px',
                     data: { title: 'Je bent ontsnapt!', text: 'Goed gedaan!' }
                 });
+                playFireworks(10);
             } else {
                 this._snackBar.open("Onjuiste volgorde!", "Sluiten", { duration: 2000, panelClass: ['bad-snackbar'] });
             }

@@ -1,4 +1,6 @@
-export interface TableElement {
+import fx from 'fireworks'
+
+interface TableElement {
     row: number;
     ands?: number;
     ors?: number;
@@ -16,7 +18,7 @@ const level1 = {
         { row: 1, ands: 1 },
     ],
     title: 'Level 1: GEVANGENISCEL',
-    text: 'Je zit gevangen in de meest high-tech gevangenis van het millenium! Maa<b>r</b> geen zo<b>r</b>gen ik help je ontstnappen🤫 Los de puzzel op en ontg<b>r</b>endel jouw gevangenis deur. Maar blijf op je hoede, want 1 ve<b>r</b>kee<b>r</b>de zet en de bewake<b>r</b>s komen naa<b>r</b> je toe!'
+    text: 'Je zit gevangen in <b>d</b>e meest high-tech gevangenis van het millenium! Maar geen zorgen ik help je ontstnappen🤫 Los de puzzel op en ontgrendel jouw gevangenis deur. Maar blijf op je hoede, want 1 verkeerde zet en de bewakers komen naar je toe!'
 }
 
 const level2 = {
@@ -28,7 +30,7 @@ const level2 = {
         { row: 1, nands: 1 },
     ],
     title: 'Level 2: GANG',
-    text: 'Goed gedaan, je bent voorbij je eerste obstakel. Maar nu is er geen weg terug, veel succes en wees op je hoede en blijf in de schaduw zodat de bewakers👮 je niet zien.'
+    text: 'Go<b>e</b>d gedaan, je bent voorbij je eerste obstakel. Maar nu is er geen weg terug, veel succes en wees op je hoede en blijf in de schaduw zodat de bewakers👮 je niet zien.'
 }
 
 const level3 = {
@@ -40,7 +42,7 @@ const level3 = {
         { row: 1, ands: 1, nands: 1 },
     ],
     title: 'Level 3: KANTINE',
-    text: 'Probeer niet te veel geluid te maken want vergis je niet hoewel de koks gefocused zijn op het eten zullen zeker geen moment twijfelen om de bewakers te roepen als ze je pakken.'
+    text: 'Probeer niet te veel geluid te maken want vergis je niet hoewel de koks gefo<b>c</b>used zijn op het eten zullen zeker geen moment twijfelen om de bewakers te roepen als ze je pakken.'
 }
 
 const level4 = {
@@ -52,7 +54,7 @@ const level4 = {
         { row: 1, ors: 2 },
     ],
     title: 'Level 4: VENTILATIESCHACHTEN',
-    text: 'Kruip stiletjes door de ventilatieschachten en zoek een geschikte plek om er uit te gaan.'
+    text: 'Kru<b>i</b>p stiletjes door de ventilatieschachten en zoek een geschikte plek om er uit te gaan.'
 }
 
 const level5 = {
@@ -64,7 +66,7 @@ const level5 = {
         { row: 1, ands: 1, nands: 1, ors: 1 },
     ],
     title: 'Level 5: WASSERIJ',
-    text: 'Je bent in een bak vol met kleren gevallen? Je hebt veel geluk🍀 dat dit er stond, sta op en ga verder voordat de bewakers je opmerken.'
+    text: 'Je bent in een bak vol met kleren gevallen? Je hebt veel geluk🍀 dat dit er stond, sta o<b>p</b> en ga verder voordat de bewakers je opmerken.'
 }
 
 const level6 = {
@@ -80,7 +82,7 @@ const level6 = {
         { row: 3, xors: 2 },
     ],
     title: 'Level 6: CELLENBLOK',
-    text: 'Blijf in de schaduws want je bent niet de enige die wilt ontstnappen, mochten de andere gevangenen beseffen dat je ze niet kan helpen dan zullen ze tegen je keren.'
+    text: 'Blijf in de sc<b>h</b>aduws want je bent niet de enige die wilt ontstnappen, mochten de andere gevangenen beseffen dat je ze niet kan helpen dan zullen ze tegen je keren.'
 }
 
 const level7 = {
@@ -92,7 +94,7 @@ const level7 = {
         { row: 1, ands: 1 },
     ],
     title: 'Level 7: CELLENBLOK',
-    text: 'Blijf zo doorgaan ik krijg signalen binnen van de eindingang, nog even door!'
+    text: 'Blijf zo doorgaan ik krijg signal<b>e</b>n binnen van de eindingang, nog even door!'
 }
 
 const level8 = {
@@ -104,7 +106,7 @@ const level8 = {
         { row: 1, ands: 1 },
     ],
     title: 'Level 8: BEZOEKERS INGANG',
-    text: 'Normale wijs een ingang voor bezoekers maar dit keer een kans om een eigen uitgang te vinden!'
+    text: 'No<b>r</b>male wijs een ingang voor bezoekers maar dit keer een kans om een eigen uitgang te vinden!'
 }
 
 const level9 = {
@@ -116,7 +118,7 @@ const level9 = {
         { row: 1, ands: 1 },
     ],
     title: 'Level 9: LUCHTPLAATS',
-    text: 'De frisse lucht is vast verfrissend, maar blijf gefocused je bent er nog niet!'
+    text: 'D<b>e</b> frisse lucht is vast verfrissend, maar blijf gefocused je bent er nog niet!'
 }
 
 const level10 = {
@@ -128,7 +130,7 @@ const level10 = {
         { row: 1, ands: 1 },
     ],
     title: 'Level 10: NOODUITGANG',
-    text: 'De bewakers zitten op je hielen en kunnen elke moment je pakken, doe je best en laat dit allemaal niet voor niks zijn!'
+    text: 'De bewake<b>r</b>s zitten op je hielen en kunnen elke moment je pakken, doe je best en laat dit allemaal niet voor niks zijn!'
 }
 
 const levels = [
@@ -148,4 +150,22 @@ function answerIsGood(input: TableElement[], answer: TableElement[]): boolean {
     return input.every((i, n) => i.ands == answer[n].ands && i.ors == answer[n].ors && i.nots == answer[n].nots && i.xors == answer[n].xors && i.nands == answer[n].nands);
 }
 
-export { levels, answerIsGood }
+function playFireworks(rounds: number) {
+    function launch(delay: number) {
+        let range: any = (n: number) => [...new Array(n)];
+
+        setTimeout(() => {
+            range(10).map(() =>
+                fx({
+                    x: Math.random() * window.innerWidth / 2 + window.innerWidth / 4,
+                    y: Math.random() * window.innerHeight / 2 + window.innerHeight / 4,
+                    colors: ['#cc3333', '#4CAF50', '#81C784']
+                })
+            )
+        }, 1000 * delay);
+    }
+
+    Array.from({ length: rounds }, (_, i) => launch(i));
+}
+
+export { levels, answerIsGood, playFireworks, TableElement }
